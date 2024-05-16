@@ -1,4 +1,4 @@
-import 'package:edtrack/models/user/user_attendance.dart';
+import 'package:edtrack/data/models/user/user_attendance.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:paged_vertical_calendar/paged_vertical_calendar.dart';
@@ -34,7 +34,7 @@ class PagedCalendarScreen extends StatelessWidget {
               ),
               child: Text(
                 DateFormat('MMMM yyyy').format(DateTime(year, month)),
-                style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                       color: Colors.white,
                     ),
               ),

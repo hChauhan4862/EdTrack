@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-import '../../../cubits/attendance/attendance_cubit.dart';
-import '../../../cubits/home/home_cubit.dart';
-import '../../../injectable.dart';
-import '../../../theme_data.dart';
+import '../../../data/cubits/attendance/attendance_cubit.dart';
+import '../../theme_data.dart';
 import '../../../utils/enums.dart';
 import '../../common/custom_card_tile.dart';
 import '../../common/custom_snackbar.dart';
@@ -22,12 +20,6 @@ class SubjectInfoCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final subCode = getIt<HomeCubit>()
-        .state
-        .subDetails
-        ?.firstWhere((s) => s.id == attendance.subject.id)
-        .code;
-
     final date = DateFormat('MMMM dd, yyyy').format(state.selectedDate);
 
     final present =
@@ -55,15 +47,13 @@ class SubjectInfoCard extends StatelessWidget {
                     color: Colors.black,
                   ),
                 ),
-                subtitle: subCode != null
-                    ? Text(
-                        'Subject Code ($subCode)',
-                        style: AppTheme.bodySmall.copyWith(
-                          fontSize: 14,
-                          color: AppTheme.mildBlack,
-                        ),
-                      )
-                    : null,
+                subtitle: Text(
+                  'Subject ID (${attendance.subject.id})',
+                  style: AppTheme.bodySmall.copyWith(
+                    fontSize: 14,
+                    color: AppTheme.mildBlack,
+                  ),
+                ),
                 trailing: IconButton(
                   onPressed: () => showCustomSnack(
                     context: context,
